@@ -3,7 +3,8 @@ import {
   SET_QUESTION,
   SET_ANSWER,
   SET_CORRECT,
-  SET_SCORE
+  SET_SCORE,
+  SET_ID
 } from "../actions/submission";
 
 const initialState = {
@@ -11,7 +12,9 @@ const initialState = {
   question: null,
   userInput: null,
   correct: null,
-  score: 1
+  score: 1,
+  id: null
+
 };
 
 const wordReducer = (state = initialState, action) => {
@@ -38,6 +41,11 @@ const wordReducer = (state = initialState, action) => {
   if (action.type === SET_SCORE) {
     return Object.assign({}, state, {
       score: action.score
+    });
+  }
+  if (action.type === SET_ID) {
+    return Object.assign({}, state, {
+      id: action.id
     });
   }
   return state;
