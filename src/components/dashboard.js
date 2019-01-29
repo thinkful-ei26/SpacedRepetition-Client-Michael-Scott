@@ -12,6 +12,8 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchNextWord());
   }
 
+  // create some function?
+
   render() {
     return (
       <div className="dashboard">
