@@ -39,31 +39,32 @@ export const userAnswer = answer => (dispatch, state) => {
   if (answer === state().test.answer) {
     console.log(state());
     console.log(true);
-    tempPromise.then(() => {
-      dispatch(setCorrect(true));
-      dispatch(setScore(state().test.score * 2));
-      console.log(state().test);
-      return;
-    }).then(() => {
-
-      dispatch(fetchNextWord());
-
-    });
+    tempPromise
+      .then(() => {
+        dispatch(setCorrect(true));
+        dispatch(setScore(state().test.score * 2));
+        console.log(state().test);
+        return;
+      })
+      .then(() => {
+        dispatch(updateScore());
+        dispatch(fetchNextWord());
+      });
     //maybe change the array after we know it was right or wrong
     // could make an action that changes the array depending on the params we send in IE id , 1
   } else {
     console.log(false);
-    tempPromise.then(() => {
-      dispatch(setCorrect(false));
-      dispatch(setScore(1));
-      console.log(state().test);
-      return;
-    })
+    tempPromise
       .then(() => {
-
+        dispatch(setCorrect(false));
+        dispatch(setScore(1));
+        console.log(state().test);
+        return;
+      })
+      .then(() => {
+        dispatch(updateScore());
         dispatch(fetchNextWord());
       });
-
   }
 };
 
@@ -128,7 +129,6 @@ export const setScoreError = error => ({
   error
 });
 
-
 export const SET_ID_LOADING = "SET_ID_LOADING";
 export const setIdLoading = () => ({
   type: SET_ID_LOADING
@@ -185,9 +185,12 @@ export const updateScore = () => (dispatch, getState) => {
     headers: {
       // Provide our auth token as credentials
       "Content-Type": "application/json",
-      Authorization: `Bearer ${authToken}`,
-      body: JSON.stringify({id: getState().test.id, score: getState().test.score})
-    }
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify({
+      id: getState().test.id,
+      score: getState().test.score
+    })
   })
     .then(res => {
       return res.json();
