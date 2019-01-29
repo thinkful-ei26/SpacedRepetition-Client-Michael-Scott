@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 
 /*
 Set if the users last answer was correct or not
@@ -9,7 +9,7 @@ export const setCorrect = correct => ({
   correct
 });
 
-/* 
+/*
 Set the users answer to the problem
 */
 export const SET_SUBMISSION_LOADING = "SET_SUBMISSION_LOADING";
@@ -92,7 +92,7 @@ Fetch the word and the answer from the database
 
 export const fetchNextWord = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  fetch(`${API_BASE_URL}/questions`, {
+  fetch(`${BASE_URL}/questions`, {
     method: "GET",
     headers: {
       // Provide our auth token as credentials
