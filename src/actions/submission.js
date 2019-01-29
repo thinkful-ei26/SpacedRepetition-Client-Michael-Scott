@@ -39,6 +39,8 @@ export const userAnswer = answer => (dispatch, state) => {
   if (answer === state().test.answer) {
     console.log(true);
     dog.then(() => dispatch(setCorrect(true)));
+    //maybe change the array after we know it was right or wrong
+    // could make an action that changes the array depending on the params we send in IE id , 1
   } else {
     console.log(false);
     dog.then(() => dispatch(setCorrect(false)));
@@ -87,12 +89,32 @@ export const setQuestionError = error => ({
 });
 
 /*
+Set Score actions
+*/
+export const SET_SCORE_LOADING = "SET_SCORE_LOADING";
+export const setScoreLoading = () => ({
+  type: SET_SCORE_LOADING
+});
+
+export const SET_SCORE = "SET_SCORE";
+export const setScore = score => ({
+  type: SET_SCORE,
+  score
+});
+
+export const SET_SCORE_ERROR = "SET_SCORE_ERROR";
+export const setScoreError = error => ({
+  type: SET_SCORE_ERROR,
+  error
+});
+
+/*
 Fetch the word and the answer from the database
 */
 
 export const fetchNextWord = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  fetch(`${BASE_URL}/questions`, {
+  fetch(`${BASE_URL}/users/next`, {
     method: "GET",
     headers: {
       // Provide our auth token as credentials
@@ -104,11 +126,20 @@ export const fetchNextWord = () => (dispatch, getState) => {
       return res.json();
     })
     .then(data => {
+      console.log(data.score);
+      console.log(data.question);
       console.log(data.answer);
       dispatch(setQuestion(data.question));
       dispatch(setAnswer(data.answer));
+      // create something that sets score
+      dispatch(setScore(data.score));
     })
     .catch(err => {
       dispatch(setQuestionError(err));
     });
 };
+
+/*
+Create an action that fetches the new endpoint for questions
+update the state
+*/
