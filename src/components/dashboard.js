@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import requiresLogin from "./requires-login";
-import { fetchProtectedData } from "../actions/protected-data";
 import "./css/dashboard.css";
 import { fetchNextWord } from "../actions/submission";
 import AnswerForm from "./answer-form";
@@ -18,18 +17,19 @@ export class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         <h1>Welcome {this.props.username}</h1>
-        <img src="https://i.stack.imgur.com/34AD2.jpg" />
+        <img className="prof" alt="profile" src="https://i.stack.imgur.com/34AD2.jpg" />
         <div className="customBr" />
         <div>
-          <h3>Translate this word to Esperanto:</h3>
-          <span>{this.props.question}</span>
+          <h3>Translate this word to English:</h3>
+          <span>{this.props.answer}</span>
         </div>
         <div className="customBr" />
         <div className="gridRow">
           <h3>Answer Here:</h3>
           <br />
-          <AnswerForm />
-          <ScoreKeeper />
+          <div>
+            <AnswerForm /> <ScoreKeeper />
+          </div>
         </div>
       </div>
     );
@@ -45,7 +45,7 @@ const mapStateToProps = state => {
     answer: state.test.answer,
     userInput: state.test.userInput,
     correct: state.test.correct
-    
+
   };
 };
 
