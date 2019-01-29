@@ -31,19 +31,39 @@ export const setSubmissionError = error => ({
 
 export const userAnswer = answer => (dispatch, state) => {
   console.log(state().test.question);
-  const dog = new Promise(function(resolve, reject) {
+  const tempPromise = new Promise(function(resolve, reject) {
     console.log("hello");
     dispatch(setSubmission(answer));
     resolve();
   });
   if (answer === state().test.answer) {
+    console.log(state());
     console.log(true);
-    dog.then(() => dispatch(setCorrect(true)));
+    tempPromise.then(() => {
+      dispatch(setCorrect(true));
+      dispatch(setScore(state().test.score * 2));
+      console.log(state().test);
+      return;
+    }).then(() => {
+
+      dispatch(fetchNextWord());
+
+    });
     //maybe change the array after we know it was right or wrong
     // could make an action that changes the array depending on the params we send in IE id , 1
   } else {
     console.log(false);
-    dog.then(() => dispatch(setCorrect(false)));
+    tempPromise.then(() => {
+      dispatch(setCorrect(false));
+      dispatch(setScore(1));
+      console.log(state().test);
+      return;
+    })
+      .then(() => {
+
+        dispatch(fetchNextWord());
+      });
+
   }
 };
 
@@ -108,6 +128,23 @@ export const setScoreError = error => ({
   error
 });
 
+
+export const SET_ID_LOADING = "SET_ID_LOADING";
+export const setIdLoading = () => ({
+  type: SET_ID_LOADING
+});
+
+export const SET_ID = "SET_ID";
+export const setId = id => ({
+  type: SET_ID,
+  id
+});
+
+export const SET_ID_ERROR = "SET_ID_ERROR";
+export const setIdError = error => ({
+  type: SET_ID_ERROR,
+  error
+});
 /*
 Fetch the word and the answer from the database
 */
@@ -133,6 +170,27 @@ export const fetchNextWord = () => (dispatch, getState) => {
       dispatch(setAnswer(data.answer));
       // create something that sets score
       dispatch(setScore(data.score));
+
+      dispatch(setId(data._id));
+    })
+    .catch(err => {
+      dispatch(setQuestionError(err));
+    });
+};
+
+export const updateScore = () => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+  fetch(`${BASE_URL}/users/submit`, {
+    method: "PUT",
+    headers: {
+      // Provide our auth token as credentials
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+      body: JSON.stringify({id: getState().test.id, score: getState().test.score})
+    }
+  })
+    .then(res => {
+      return res.json();
     })
     .catch(err => {
       dispatch(setQuestionError(err));

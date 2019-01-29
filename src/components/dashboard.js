@@ -45,6 +45,7 @@ const mapStateToProps = state => {
     answer: state.test.answer,
     userInput: state.test.userInput,
     correct: state.test.correct
+    
   };
 };
 

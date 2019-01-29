@@ -2,6 +2,7 @@ import React from "react";
 import { Field, reduxForm, focus } from "redux-form";
 import { userAnswer } from "../actions/submission";
 import Input from "./input";
+import { fetchNextWord } from "../actions/submission";
 
 //submitAnswer(answer)
 export class AnswerForm extends React.Component {
@@ -10,11 +11,15 @@ export class AnswerForm extends React.Component {
     return this.props.dispatch(userAnswer(answer.answer));
   }
 
+
+
+
   render() {
     return (
       <form
         className="login-form"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+
       >
         <Field component={Input} type="text" name="answer" />
         <br />
@@ -24,6 +29,7 @@ export class AnswerForm extends React.Component {
         >
           Submit
         </button>
+
       </form>
     );
   }
