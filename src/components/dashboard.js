@@ -4,6 +4,8 @@ import requiresLogin from "./requires-login";
 import { fetchProtectedData } from "../actions/protected-data";
 import "./css/dashboard.css";
 import { fetchNextWord } from "../actions/submission";
+import AnswerForm from "./answer-form";
+import ScoreKeeper from "./score-keeper";
 
 export class Dashboard extends React.Component {
   componentDidMount() {
@@ -13,14 +15,19 @@ export class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        <span>Welcome: {this.props.username}</span>
-        <div className="gridRow">
-          <span>Answer Here:</span>
-          <input type="text" />
-          <button type="submit">Submit</button>
-        </div>
+        <h1>Welcome {this.props.username}</h1>
+        <img src="https://i.stack.imgur.com/34AD2.jpg" />
+        <div className="customBr" />
         <div>
-          <span>{this.props.answer}</span>
+          <h3>Translate this word to Esperanto:</h3>
+          <span>{this.props.question}</span>
+        </div>
+        <div className="customBr" />
+        <div className="gridRow">
+          <h3>Answer Here:</h3>
+          <br />
+          <AnswerForm />
+          <ScoreKeeper />
         </div>
       </div>
     );
@@ -34,7 +41,8 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName}`,
     question: state.test.question,
     answer: state.test.answer,
-    userInput: state.test.userInput
+    userInput: state.test.userInput,
+    correct: state.test.correct
   };
 };
 

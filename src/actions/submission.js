@@ -1,5 +1,14 @@
 import { API_BASE_URL } from "../config";
 
+/*
+Set if the users last answer was correct or not
+*/
+export const SET_CORRECT = "SET_CORRECT";
+export const setCorrect = correct => ({
+  type: SET_CORRECT,
+  correct
+});
+
 /* 
 Set the users answer to the problem
 */
@@ -19,6 +28,22 @@ export const setSubmissionError = error => ({
   type: SET_SUBMISSION_ERROR,
   error
 });
+
+export const userAnswer = answer => (dispatch, state) => {
+  console.log(state().test.question);
+  const dog = new Promise(function(resolve, reject) {
+    console.log("hello");
+    dispatch(setSubmission(answer));
+    resolve();
+  });
+  if (answer === state().test.answer) {
+    console.log(true);
+    dog.then(() => dispatch(setCorrect(true)));
+  } else {
+    console.log(false);
+    dog.then(() => dispatch(setCorrect(false)));
+  }
+};
 
 /*
 Set the answer
@@ -79,6 +104,7 @@ export const fetchNextWord = () => (dispatch, getState) => {
       return res.json();
     })
     .then(data => {
+      console.log(data.answer);
       dispatch(setQuestion(data.question));
       dispatch(setAnswer(data.answer));
     })
