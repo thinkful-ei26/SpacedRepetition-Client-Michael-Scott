@@ -36,7 +36,7 @@ export const userAnswer = answer => (dispatch, state) => {
     dispatch(setSubmission(answer));
     resolve();
   });
-  if (answer === state().test.answer) {
+  if (answer === state().test.question) {
     console.log(state());
     console.log(true);
     tempPromise.then(() => {

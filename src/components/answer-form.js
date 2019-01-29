@@ -1,13 +1,13 @@
 import React from "react";
-import { Field, reduxForm, focus } from "redux-form";
+import { Field, reduxForm, focus, reset } from "redux-form";
 import { userAnswer } from "../actions/submission";
 import Input from "./input";
-import { fetchNextWord } from "../actions/submission";
 
 //submitAnswer(answer)
 export class AnswerForm extends React.Component {
   onSubmit(answer) {
-    console.log(answer.answer);
+    console.log("the submission is ", answer);
+    this.props.dispatch(reset('answer'));
     return this.props.dispatch(userAnswer(answer.answer));
   }
 
