@@ -25,7 +25,7 @@ export class Dashboard extends React.Component {
         <div className="customBr" />
         <div>
           <h3>Translate this word to English:</h3>
-          <span>{this.props.answer}</span>
+          <span>{this.props.question}</span>
         </div>
         <div className="customBr" />
         <div className="gridRow">

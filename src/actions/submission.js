@@ -98,6 +98,7 @@ export const fetchNextWord = () => (dispatch, getState) => {
       return res.json();
     })
     .then(data => {
+      console.log("the question :", data.question);
       dispatch(setQuestion(data.question));
       dispatch(setAnswer(data.answer));
     })

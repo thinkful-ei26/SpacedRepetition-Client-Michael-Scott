@@ -7,19 +7,15 @@ import Input from "./input";
 export class AnswerForm extends React.Component {
   onSubmit(answer) {
     console.log("the submission is ", answer);
-    this.props.dispatch(reset('answer'));
+    this.props.dispatch(reset("answer"));
     return this.props.dispatch(userAnswer(answer.answer));
   }
-
-
-
 
   render() {
     return (
       <form
         className="login-form"
         onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-
       >
         <Field component={Input} type="text" name="answer" />
         <br />
@@ -29,7 +25,6 @@ export class AnswerForm extends React.Component {
         >
           Submit
         </button>
-
       </form>
     );
   }
