@@ -24,7 +24,7 @@ export const userAnswer = answer => (dispatch, state) => {
   console.log(state().test.question);
   const authToken = state().auth.authToken;
   dispatch(setSubmission(answer));
-
+  console.log("get it");
   fetch(`${BASE_URL}/users/submit`, {
     method: "PUT",
     headers: {
