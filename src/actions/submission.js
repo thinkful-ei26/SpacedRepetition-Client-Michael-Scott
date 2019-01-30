@@ -63,6 +63,9 @@ export const userAnswer = answer => (dispatch, state) => {
       })
       .then(() => {
         dispatch(updateScore());
+        return;
+      })
+      .then(() => {
         dispatch(fetchNextWord());
       });
   }
