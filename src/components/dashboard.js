@@ -17,7 +17,11 @@ export class Dashboard extends React.Component {
     return (
       <div className="dashboard">
         <h1>Welcome {this.props.username}</h1>
-        <img className="prof" alt="profile" src="https://i.stack.imgur.com/34AD2.jpg" />
+        <img
+          className="prof"
+          alt="profile"
+          src="https://i.stack.imgur.com/34AD2.jpg"
+        />
         <div className="customBr" />
         <div>
           <h3>Translate this word to English:</h3>
@@ -43,9 +47,7 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName}`,
     question: state.test.question,
     answer: state.test.answer,
-    userInput: state.test.userInput,
-    correct: state.test.correct
-
+    userInput: state.test.userInput
   };
 };
 
