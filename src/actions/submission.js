@@ -63,6 +63,26 @@ export const setAnswerError = error => ({
 /*
 Set the test word
 */
+export const SET_CORRECT_LOADING = "SET_CORRECT_LOADING";
+export const setCorrectLoading = () => ({
+  type: SET_CORRECT_LOADING
+});
+
+export const SET_CORRECT = "SET_CORRECT";
+export const setCorrect = correct => ({
+  type: SET_CORRECT,
+  correct
+});
+
+export const SET_CORRECT_ERROR = "SET_CORRECT_ERROR";
+export const setCorrectError = error => ({
+  type: SET_CORRECT_ERROR,
+  error
+});
+
+/*
+Set the test word
+*/
 export const SET_QUESTION_LOADING = "SET_QUESTION_LOADING";
 export const setQuestionLoading = () => ({
   type: SET_QUESTION_LOADING
@@ -98,9 +118,11 @@ export const fetchNextWord = () => (dispatch, getState) => {
       return res.json();
     })
     .then(data => {
-      console.log("the question :", data.question);
-      dispatch(setQuestion(data.question));
-      dispatch(setAnswer(data.answer));
+      console.log("the question :", data.question.question);
+      console.log("correct :", data.correct);
+      dispatch(setCorrect(data.correct));
+      dispatch(setQuestion(data.question.question));
+      dispatch(setAnswer(data.question.answer));
     })
     .catch(err => {
       dispatch(setQuestionError(err));
