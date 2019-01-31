@@ -15,7 +15,7 @@ export class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="dashboard">
+      <main className="dashboard">
         <h1>Welcome {this.props.username}</h1>
         <img
           className="prof"
@@ -24,7 +24,7 @@ export class Dashboard extends React.Component {
         />
         <div className="customBr" />
         <div>
-          <h3>Translate this word to English:</h3>
+          <h2>Translate this word to English:</h2>
           <span>{this.props.question}</span>
         </div>
         <div className="customBr" />
@@ -35,7 +35,7 @@ export class Dashboard extends React.Component {
             <AnswerForm /> <ScoreKeeper />
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 }

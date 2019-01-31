@@ -13,19 +13,23 @@ export class AnswerForm extends React.Component {
 
   render() {
     return (
-      <form
-        className="login-form"
-        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-      >
-        <Field component={Input} type="text" name="answer" />
-        <br />
-        <button
-          type="submit"
-          disabled={this.props.pristine || this.props.submitting}
+      <div>
+
+        <form
+          className="login-form"
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
+          
+          <Field component={Input} type="text" name="answer" />
+          <br />
+          <button
+            type="submit"
+            disabled={this.props.pristine || this.props.submitting}
+          >
           Submit
-        </button>
-      </form>
+          </button>
+        </form>
+      </div>
     );
   }
 }
