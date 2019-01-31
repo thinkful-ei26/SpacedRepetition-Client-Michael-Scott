@@ -8,7 +8,7 @@ class ScoreKeeper extends React.Component {
       if (this.props.correct === true) {
         return <div>Nice, {this.props.userInput} is Correct</div>;
       } else {
-        return <div>Incorrect {this.props.userInput}</div>;
+        return <div>{this.props.userInput} is Incorrect</div>;
       }
     } else {
       return <div />;
