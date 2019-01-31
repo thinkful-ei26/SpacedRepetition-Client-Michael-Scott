@@ -22,10 +22,12 @@ export class HeaderBar extends React.Component {
     }
     return (
       <React.Fragment>
-        <div className="topnav">
-          <span href="#home">Esperanto</span>
-          {logOutButton}
-        </div>
+        <header>
+          <div className="topnav">
+            <span href="#home">Esperanto</span>
+            {logOutButton}
+          </div>
+        </header>
       </React.Fragment>
     );
   }
