@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { clearAuth } from "../actions/auth";
 import { clearAuthToken } from "../local-storage";
 import "./css/header-bar.css";
+import { Link } from "react-router-dom";
+
 
 export class HeaderBar extends React.Component {
   logOut() {
@@ -11,20 +13,24 @@ export class HeaderBar extends React.Component {
   }
 
   render() {
-    // Only render the log out button if we are logged in
     let logOutButton;
     if (this.props.loggedIn) {
       logOutButton = (
-        <button className="topnav-right" onClick={() => this.logOut()}>
-          Log out
-        </button>
+        <div>
+          <Link to="/logout">
+            <button className="topnav-right" onClick={() => this.logOut()}>
+              Log out
+            </button>
+          </Link>
+        </div>
+
       );
     }
     return (
       <React.Fragment>
         <header>
           <div className="topnav">
-            <span href="#home">Esperanto</span>
+            <span href="#home">Lingvo</span>
             {logOutButton}
           </div>
         </header>
