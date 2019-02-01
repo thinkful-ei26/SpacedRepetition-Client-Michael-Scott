@@ -3,7 +3,7 @@
 
 Dummy account and password: <br>
   username: demo <br>
-  password: password
+  password: password123
 
 ## Description
   Lingvo is a simple web app that helps you learn Esperanto. Lingo implements
