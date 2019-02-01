@@ -16,11 +16,7 @@ export class Dashboard extends React.Component {
     return (
       <main className="dashboard">
         <h1>Welcome {this.props.username}</h1>
-        <img
-          className="prof"
-          alt="profile"
-          src="https://i.stack.imgur.com/34AD2.jpg"
-        />
+        
         <span>You have mastered {this.props.progress} words of Esperanto</span>
         <Progressbar progress={this.props.progress} />
         <div className="customBr" />
