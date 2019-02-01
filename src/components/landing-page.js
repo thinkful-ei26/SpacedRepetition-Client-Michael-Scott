@@ -11,8 +11,8 @@ export function LandingPage(props) {
   }
 
   return (
-    <div className="home">
-      <h2>Welcome to learning Esperanto</h2>
+    <div role="main" className="home">
+      <h1>Welcome to learning Esperanto</h1>
       <p>
         Here you will learn how to speak esperanto. Login or register and give
         it a try! We will track your progress and let you know how you are
@@ -20,7 +20,9 @@ export function LandingPage(props) {
         esperanto.
       </p>
       <LoginForm />
-      <span>Not signed up? <Link to="/register">Register</Link></span>
+      <span>
+        Not signed up? <Link to="/register">Register</Link>
+      </span>
     </div>
   );
 }

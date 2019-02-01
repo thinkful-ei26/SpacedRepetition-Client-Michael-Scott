@@ -14,19 +14,18 @@ export class AnswerForm extends React.Component {
   render() {
     return (
       <div>
-
         <form
           className="login-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-
+          <label htmlFor="answer">Answer Here:</label>
           <Field component={Input} type="text" name="answer" />
           <br />
           <button
             type="submit"
             disabled={this.props.pristine || this.props.submitting}
           >
-          Submit
+            Submit
           </button>
         </form>
       </div>

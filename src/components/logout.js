@@ -3,12 +3,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./css/landing-page.css";
 
-
 export function Logout(props) {
-
   return (
-    <div className="home">
-      <h2>You have been logged out</h2>
+    <div role="main" className="home">
+      <h1>You have been logged out</h1>
       <Link to="/">home</Link>
     </div>
   );

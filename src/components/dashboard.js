@@ -26,7 +26,6 @@ export class Dashboard extends React.Component {
         </div>
         <div className="customBr" />
         <div className="gridRow">
-          <h3>Answer Here:</h3>
           <br />
           <div>
             <AnswerForm /> <ScoreKeeper />
