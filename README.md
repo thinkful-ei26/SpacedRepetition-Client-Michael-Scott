@@ -1,4 +1,4 @@
-# [Lingvo](https://pokr-ei26.herokuapp.com/)
+# [Lingvo](https://lingvo-client.herokuapp.com/)
 [Server Repo](https://github.com/thinkful-ei26/SpacedRepetition-Server-Michael-Scott)
 
 Dummy account and password: <br>

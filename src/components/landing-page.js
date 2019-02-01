@@ -20,7 +20,7 @@ export function LandingPage(props) {
         esperanto.
       </p>
       <LoginForm />
-      <Link to="/register">Register</Link>
+      <span>Not signed up? <Link to="/register">Register</Link></span>
     </div>
   );
 }

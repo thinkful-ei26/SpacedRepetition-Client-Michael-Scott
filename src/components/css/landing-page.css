@@ -12,26 +12,21 @@
 }
 
 .home a{
-    text-decoration: none;
-    background-color:gray;
+
     color:white;
-    margin-left:30%;
-    margin-right:30%;
-    font-size: 14px;
-    padding:2px;
-    border: 1px solid white;
+
 }
 
 .home a:hover{
-    background-color:white;
-    color:black;
+    color:grey;
 }
 .home button{
     text-decoration: none;
     background-color:gray;
     color:white;
-    width:40%;
+    width:30%;
     border: 1px solid white;
+    border-radius: 2px;
     padding:4px;
 }
 .home button:hover{
