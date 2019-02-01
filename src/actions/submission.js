@@ -21,9 +21,9 @@ export const setSubmissionError = error => ({
 });
 
 export const userAnswer = answer => (dispatch, state) => {
-  console.log(state().test.question);
+  //console.log(state().test.question);
   const authToken = state().auth.authToken;
-  console.log("get it");
+  //console.log("get it");
   fetch(`${BASE_URL}/users/submit`, {
     method: "PUT",
     headers: {
@@ -33,7 +33,7 @@ export const userAnswer = answer => (dispatch, state) => {
     },
     body: JSON.stringify({ answer: answer })
   }).then(() => {
-    console.log("get it");
+    //console.log("get it");
     dispatch(fetchNextWord());
   });
 };
