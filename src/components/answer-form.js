@@ -6,7 +6,7 @@ import Input from "./input";
 //submitAnswer(answer)
 export class AnswerForm extends React.Component {
   onSubmit(answer) {
-    console.log("the submission is ", answer);
+    //console.log("the submission is ", answer);
     this.props.dispatch(reset("answer"));
     return this.props.dispatch(userAnswer(answer.answer));
   }
@@ -19,7 +19,7 @@ export class AnswerForm extends React.Component {
           className="login-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-          
+
           <Field component={Input} type="text" name="answer" />
           <br />
           <button

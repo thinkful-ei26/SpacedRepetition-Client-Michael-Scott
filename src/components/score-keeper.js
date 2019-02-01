@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class ScoreKeeper extends React.Component {
   render() {
-    console.log(this.props.correct);
+    //console.log(this.props.correct);
     if (this.props.userInput !== null) {
       if (this.props.correct === true) {
         return <div>Nice, {this.props.userInput} is Correct</div>;
