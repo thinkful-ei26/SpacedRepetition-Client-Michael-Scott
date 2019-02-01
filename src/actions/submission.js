@@ -23,7 +23,6 @@ export const setSubmissionError = error => ({
 export const userAnswer = answer => (dispatch, state) => {
   console.log(state().test.question);
   const authToken = state().auth.authToken;
-  dispatch(setSubmission(answer));
   console.log("get it");
   fetch(`${BASE_URL}/users/submit`, {
     method: "PUT",
@@ -117,9 +116,7 @@ export const fetchNextWord = () => (dispatch, getState) => {
       return res.json();
     })
     .then(data => {
-      console.log("the question :", data.question.question);
-      console.log("correct :", data.correct);
-      console.log("progress :", data.progress);
+      dispatch(setSubmission(data.last));
       dispatch(setCorrect(data.correct));
       dispatch(setQuestion(data.question.question));
       dispatch(setProgress(data.progress));
