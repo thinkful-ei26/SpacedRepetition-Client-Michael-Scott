@@ -16,7 +16,7 @@ export class Dashboard extends React.Component {
     return (
       <main className="dashboard">
         <h1>Welcome {this.props.username}</h1>
-        
+
         <span>You have mastered {this.props.progress} words of Esperanto</span>
         <Progressbar progress={this.props.progress} />
         <div className="customBr" />
@@ -43,7 +43,6 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     name: `${currentUser.firstName}`,
     question: state.test.question,
-    answer: state.test.answer,
     userInput: state.test.userInput,
     progress: state.test.progress,
     loggedIn: state.auth.currentUser !== null
