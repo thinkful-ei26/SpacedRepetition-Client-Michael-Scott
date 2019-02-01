@@ -61,7 +61,27 @@ export const setAnswerError = error => ({
 });
 
 /*
-Set the test word
+Set progress
+*/
+export const SET_PROGRESS_LOADING = "SET_PROGRESS_LOADING";
+export const setProgressLoading = () => ({
+  type: SET_PROGRESS_LOADING
+});
+
+export const SET_PROGRESS = "SET_PROGRESS";
+export const setProgress = progress => ({
+  type: SET_PROGRESS,
+  progress
+});
+
+export const SET_PROGRESS_ERROR = "SET_PROGRESS_ERROR";
+export const setProgressError = error => ({
+  type: SET_PROGRESS_ERROR,
+  error
+});
+
+/*
+Set Correct
 */
 export const SET_CORRECT_LOADING = "SET_CORRECT_LOADING";
 export const setCorrectLoading = () => ({
@@ -120,9 +140,11 @@ export const fetchNextWord = () => (dispatch, getState) => {
     .then(data => {
       console.log("the question :", data.question.question);
       console.log("correct :", data.correct);
+      console.log("progress :", data.progress);
       dispatch(setCorrect(data.correct));
       dispatch(setQuestion(data.question.question));
       dispatch(setAnswer(data.question.answer));
+      dispatch(setProgress(data.progress));
     })
     .catch(err => {
       dispatch(setQuestionError(err));

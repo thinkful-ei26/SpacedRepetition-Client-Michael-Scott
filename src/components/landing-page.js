@@ -9,10 +9,16 @@ export function LandingPage(props) {
   if (props.loggedIn) {
     return <Redirect to="/dashboard" />;
   }
-  
+
   return (
     <div className="home">
       <h2>Welcome to learning Esperanto</h2>
+      <p>
+        Here you will learn how to speak esperanto. Login or register and give
+        it a try! We will track your progress and let you know how you are
+        doing. For your first lesson we will teach you hundo which means dog in
+        esperanto.
+      </p>
       <LoginForm />
       <Link to="/register">Register</Link>
     </div>

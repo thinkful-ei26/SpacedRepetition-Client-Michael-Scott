@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import requiresLogin from "./requires-login";
 import "./css/dashboard.css";
 import { fetchNextWord } from "../actions/submission";
-
-
+import Progressbar from "./progressbar";
 import AnswerForm from "./answer-form";
 import ScoreKeeper from "./score-keeper";
 
@@ -16,7 +15,6 @@ export class Dashboard extends React.Component {
   render() {
     return (
       <main className="dashboard">
-
         <h1>Welcome {this.props.username}</h1>
         <img
           className="prof"
@@ -34,6 +32,7 @@ export class Dashboard extends React.Component {
           <br />
           <div>
             <AnswerForm /> <ScoreKeeper />
+            <Progressbar progress={this.props.progress} />
           </div>
         </div>
       </main>
@@ -49,6 +48,7 @@ const mapStateToProps = state => {
     question: state.test.question,
     answer: state.test.answer,
     userInput: state.test.userInput,
+    progress: state.test.progress,
     loggedIn: state.auth.currentUser !== null
   };
 };
