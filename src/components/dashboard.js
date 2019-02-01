@@ -21,6 +21,8 @@ export class Dashboard extends React.Component {
           alt="profile"
           src="https://i.stack.imgur.com/34AD2.jpg"
         />
+        <span>You have mastered {this.props.progress} words of Esperanto</span>
+        <Progressbar progress={this.props.progress} />
         <div className="customBr" />
         <div>
           <h2>Translate this word to English:</h2>
@@ -32,7 +34,6 @@ export class Dashboard extends React.Component {
           <br />
           <div>
             <AnswerForm /> <ScoreKeeper />
-            <Progressbar progress={this.props.progress} />
           </div>
         </div>
       </main>

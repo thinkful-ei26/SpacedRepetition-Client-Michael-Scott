@@ -11,9 +11,10 @@
     
 }
 .ht0{
-    width: 50%;
-    
-    background-color: green;
+    border-radius: 20px;
+    height: 30px;
+    width: 100%;
+    background-color: grey;
 }
 .ht1{
     border-radius: 20px;

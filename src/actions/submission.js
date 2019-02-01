@@ -40,27 +40,6 @@ export const userAnswer = answer => (dispatch, state) => {
 };
 
 /*
-Set the answer
-*/
-
-export const SET_ANSWER_LOADING = "SET_ANSWER_LOADING";
-export const setAnswerLoading = () => ({
-  type: SET_ANSWER_LOADING
-});
-
-export const SET_ANSWER = "SET_ANSWER";
-export const setAnswer = answer => ({
-  type: SET_ANSWER,
-  answer
-});
-
-export const SET_ANSWER_ERROR = "SET_ANSWER_ERROR";
-export const setAnswerError = error => ({
-  type: SET_ANSWER_ERROR,
-  error
-});
-
-/*
 Set progress
 */
 export const SET_PROGRESS_LOADING = "SET_PROGRESS_LOADING";
@@ -143,7 +122,6 @@ export const fetchNextWord = () => (dispatch, getState) => {
       console.log("progress :", data.progress);
       dispatch(setCorrect(data.correct));
       dispatch(setQuestion(data.question.question));
-      dispatch(setAnswer(data.question.answer));
       dispatch(setProgress(data.progress));
     })
     .catch(err => {
