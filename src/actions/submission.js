@@ -130,3 +130,15 @@ export const fetchNextWord = () => (dispatch, getState) => {
 Create an action that fetches the new endpoint for questions
 update the state
 */
+
+// Create submit for modals
+
+export const SET_MODAL = "SET_MODAL";
+export const setModal = modal => ({
+  type: SET_MODAL,
+  modal
+});
+
+export const modalSetter = modal => dispatch => {
+  dispatch(setModal(modal));
+};
