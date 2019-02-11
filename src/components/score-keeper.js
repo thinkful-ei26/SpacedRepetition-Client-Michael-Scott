@@ -35,7 +35,7 @@ class ScoreKeeper extends React.Component {
       >
         {temp}
         <button onClick={() => this.props.dispatch(modalSetter(false))}>
-          Close Modal
+          Next Question
         </button>
       </ReactModal>
     );
